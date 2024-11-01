@@ -42,8 +42,22 @@
     const v2 = new Truck();
     function useVehicle(vehicle) {
         vehicle.drive();
-        if ('loadCargo' in vehicle) {
+        if ("loadCargo" in vehicle) {
             vehicle.loadCargo(1000);
         }
+    }
+    useVehicle(v1);
+    useVehicle(v2);
+    function moveAnimal(animal) {
+        let speed;
+        switch (animal.type) {
+            case "bird":
+                speed = animal.flyingSpeed;
+                break;
+            case "horse":
+                speed = animal.runningSpeed;
+                break;
+        }
+        console.log("Moving at speed: " + speed);
     }
 }
