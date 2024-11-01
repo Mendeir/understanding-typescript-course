@@ -31,14 +31,15 @@ class ITDepartment extends Department {
     }
 
     describe() {
-        console.log('IT Department - ID:', this.id);
+        console.log("IT Department - ID:", this.id);
     }
 }
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    private static instance: AccountingDepartment;
 
-    constructor(
+    private constructor(
         id: string,
         private reports: string[],
     ) {
@@ -47,7 +48,16 @@ class AccountingDepartment extends Department {
     }
 
     describe() {
-        console.log('Accounting Department - ID:', this.id);
+        console.log("Accounting Department - ID:", this.id);
+    }
+
+    static getInstance() {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+
+        this.instance = new AccountingDepartment("1", []);
+        return this.instance;
     }
 
     get mostRecentReport() {
@@ -83,7 +93,9 @@ class AccountingDepartment extends Department {
     }
 }
 
-const accounting = new AccountingDepartment("1", []);
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
+console.log("Accounting 1: " + accounting, "Accounting 2" + accounting2);
 const itAccount1 = new ITDepartment("2", ["MG", "TheGreat"]);
 
 itAccount1.printEmployeeInformation();
