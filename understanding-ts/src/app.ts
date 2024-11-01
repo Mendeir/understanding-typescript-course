@@ -20,7 +20,39 @@ class Department {
     }
 }
 
-const accounting = new Department("1", "Accounting");
+class ITDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+        super(id, "ITDepartment");
+        this.admins = admins;
+    }
+}
+
+class AccountingDepartment extends Department {
+    constructor(
+        id: string,
+        private reports: string[],
+    ) {
+        super(id, "Accounting");
+    }
+
+    addReport(text: string) {
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+}
+
+const accounting = new AccountingDepartment("1", []);
+const itAccount1 = new ITDepartment("2", ["MG", "TheGreat"]);
+
+itAccount1.printEmployeeInformation();
+itAccount1.describe();
+
+accounting.addReport("Hello World!")
+accounting.printReports();
 
 accounting.addEmployee("MG");
 accounting.addEmployee("TheGreat");
