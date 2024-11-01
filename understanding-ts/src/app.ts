@@ -1,24 +1,24 @@
 interface Greetable {
-    name: string;
+    readonly name: string;
 
     greet(phrase: string): void;
 }
 
-class Person implements Greetable{
+class Person implements Greetable {
     name: string;
     age = 30;
 
     constructor(name: string) {
-        this.name = name
+        this.name = name;
     }
 
     greet(phrase: string) {
-        console.log(phrase + ' ' + this.name)
+        console.log(phrase + " " + this.name);
     }
 }
 
-let user1: Greetable
+let user1: Greetable;
 
-user1 = new Person('MG')
+user1 = new Person("MG");
 
-user1.greet('MG The great!!')
+user1.greet("MG The great!!");
