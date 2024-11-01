@@ -8,9 +8,6 @@ class Department {
     static createEmployee(name) {
         return { name: name };
     }
-    describe() {
-        console.log(`Department (${this.id}): ${this.name}`);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -25,12 +22,18 @@ class ITDepartment extends Department {
         super(id, "ITDepartment");
         this.admins = admins;
     }
+    describe() {
+        console.log('IT Department - ID:', this.id);
+    }
 }
 class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, "Accounting");
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+    describe() {
+        console.log('Accounting Department - ID:', this.id);
     }
     get mostRecentReport() {
         if (this.lastReport) {
