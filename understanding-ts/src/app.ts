@@ -9,7 +9,8 @@ addInterface = (n1: number, n2: number) => {
 };
 
 interface Named {
-    readonly name: string;
+    readonly name?: string;
+    outputName?: string;
 }
 
 interface Greetable extends Named {
@@ -17,11 +18,13 @@ interface Greetable extends Named {
 }
 
 class Person implements Greetable {
-    name: string;
+    name?: string;
     age = 30;
 
-    constructor(name: string) {
-        this.name = name;
+    constructor(name?: string) {
+        if (name) {
+            this.name = name;
+        }
     }
 
     greet(phrase: string) {

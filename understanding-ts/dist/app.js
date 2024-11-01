@@ -6,7 +6,9 @@ addInterface = (n1, n2) => {
 class Person {
     constructor(name) {
         this.age = 30;
-        this.name = name;
+        if (name) {
+            this.name = name;
+        }
     }
     greet(phrase) {
         console.log(phrase + " " + this.name);
