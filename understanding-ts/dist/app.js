@@ -1,10 +1,8 @@
 "use strict";
 {
-    const names = ["Max", "Manuel"];
-    names[0].split(" ");
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("This is done!");
-        }, 2000);
-    });
+    function merge(objA, objB) {
+        return Object.assign(Object.assign({}, objA), objB);
+    }
+    const mergeObj = merge({ name: "Max", hobbies: ["Sports"] }, { age: 30 });
+    console.log(mergeObj.age);
 }
