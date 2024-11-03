@@ -107,4 +107,12 @@
 
         console.log("Moving at speed: " + speed);
     }
+
+    moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+    const userInputElement = document.getElementById("user-input");
+
+    if (userInputElement) {
+        (userInputElement as HTMLInputElement).value = "Hi there!";
+    }
 }
