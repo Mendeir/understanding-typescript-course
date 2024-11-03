@@ -11,6 +11,8 @@
         }
         return a + b;
     }
+    const result = add("Max", "Schwarz");
+    result.split(" ");
     function printEmployeeInformation(emp) {
         console.log("Name: " + emp.name);
         if ("privileges" in emp) {
