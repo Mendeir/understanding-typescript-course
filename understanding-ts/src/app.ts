@@ -35,4 +35,33 @@
     }
 
     extractAndConvert({ name: "Max" }, "name");
+
+    class DataStorage<T extends string | number | boolean> {
+        private data: T[] = [];
+
+        addItem(item: T) {
+            this.data.push(item);
+        }
+
+        removeItem(item: T) {
+            this.data.splice(this.data.indexOf(item), 1);
+        }
+
+        getItems() {
+            return [...this.data];
+        }
+    }
+
+    const textStorage = new DataStorage<string>();
+    textStorage.addItem("MG");
+    textStorage.addItem("MG2");
+    textStorage.removeItem("MG2");
+    console.log(textStorage.getItems());
+
+    // const objStorage = new DataStorage<object>();
+    // const mgObj = { name: "MG" };
+    // objStorage.addItem(mgObj);
+    // objStorage.addItem({ name: "TheGreat" });
+    // objStorage.removeItem({ name: "TheGreat" });
+    // console.log(objStorage.getItems());
 }

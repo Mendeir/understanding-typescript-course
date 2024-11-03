@@ -20,4 +20,29 @@
         return "Value: " + obj[key];
     }
     extractAndConvert({ name: "Max" }, "name");
+    class DataStorage {
+        constructor() {
+            this.data = [];
+        }
+        addItem(item) {
+            this.data.push(item);
+        }
+        removeItem(item) {
+            this.data.splice(this.data.indexOf(item), 1);
+        }
+        getItems() {
+            return [...this.data];
+        }
+    }
+    const textStorage = new DataStorage();
+    textStorage.addItem("MG");
+    textStorage.addItem("MG2");
+    textStorage.removeItem("MG2");
+    console.log(textStorage.getItems());
+    // const objStorage = new DataStorage<object>();
+    // const mgObj = { name: "MG" };
+    // objStorage.addItem(mgObj);
+    // objStorage.addItem({ name: "TheGreat" });
+    // objStorage.removeItem({ name: "TheGreat" });
+    // console.log(objStorage.getItems());
 }
