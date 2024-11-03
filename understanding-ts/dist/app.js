@@ -65,4 +65,7 @@
     if (userInputElement) {
         userInputElement.value = "Hi there!";
     }
+    const errorBag = {
+        email: "Not a valid email!",
+    };
 }
