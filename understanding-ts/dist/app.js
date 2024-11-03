@@ -39,10 +39,14 @@
     textStorage.addItem("MG2");
     textStorage.removeItem("MG2");
     console.log(textStorage.getItems());
-    // const objStorage = new DataStorage<object>();
-    // const mgObj = { name: "MG" };
-    // objStorage.addItem(mgObj);
-    // objStorage.addItem({ name: "TheGreat" });
-    // objStorage.removeItem({ name: "TheGreat" });
-    // console.log(objStorage.getItems());
+    function createCourseGoal(title, description, date) {
+        let courseGoal = {};
+        courseGoal.title = title;
+        courseGoal.description = description;
+        courseGoal.completeUntil = date;
+        return courseGoal;
+    }
+    const names = ["MG", "LEZG"];
+    // names.push("The Great");
+    // names.pop();
 }
