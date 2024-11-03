@@ -15,5 +15,9 @@
         }
         return [element, descriptionText];
     }
-    console.log(countAndDescribe(['Sports', 'Cooking']));
+    console.log(countAndDescribe(["Sports", "Cooking"]));
+    function extractAndConvert(obj, key) {
+        return "Value: " + obj[key];
+    }
+    extractAndConvert({ name: "Max" }, "name");
 }
