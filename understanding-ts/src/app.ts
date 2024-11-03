@@ -8,14 +8,22 @@ function Logger(logString: string) {
 
 function WithTemplate(template: string, hookId: string) {
     console.log("TEMPLATE FACTORY");
-    return function (constructor: any) {
-        console.log("Rendering template");
-        const hookEl = document.getElementById(hookId);
-        const p = new constructor();
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector("h1")!.textContent = p.name;
-        }
+    return function <T extends { new (...args: any[]): { name: string } }>(
+        originalConstructor: T,
+    ) {
+        // Return new constructor function
+        return class extends originalConstructor {
+            constructor(...args: any[]) {
+                super(...args);
+                console.log("Rendering template");
+                const hookEl = document.getElementById(hookId);
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    // Use 'this.name' instead of creating new instance
+                    hookEl.querySelector("h1")!.textContent = this.name;
+                }
+            }
+        };
     };
 }
 
