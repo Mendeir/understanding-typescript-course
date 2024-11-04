@@ -61,7 +61,21 @@ class ProjectState extends State<Project> {
         );
 
         this.projects.push(newProject);
+        this.updateListeners();
+    }
 
+    moveProject(projectId: string, newStatus: ProjectStatus) {
+        const project = this.projects.find(
+            (project) => project.id === projectId,
+        );
+
+        if (project && project.status != +newStatus) {
+            project.status = newStatus;
+            this.updateListeners();
+        }
+    }
+
+    private updateListeners() {
         for (const listenerFunction of this.listeners) {
             listenerFunction(this.projects.slice());
         }
@@ -201,9 +215,7 @@ class ProjectItem
         event.dataTransfer!.effectAllowed = "move";
     }
 
-    dragEndHandler(_: DragEvent) {
-        console.log("DragEnd");
-    }
+    dragEndHandler(_: DragEvent) {}
 
     configure(): void {
         this.element.addEventListener("dragstart", this.dragStartHandler);
@@ -244,8 +256,15 @@ class ProjectList
         }
     }
 
+    @Autobind
     dropHandler(event: DragEvent): void {
-        console.log(event);
+        const projectId = event.dataTransfer!.getData("text/plain");
+        projectState.moveProject(
+            projectId,
+            this.type === "active"
+                ? ProjectStatus.Active
+                : ProjectStatus.Finished,
+        );
     }
 
     @Autobind
@@ -357,7 +376,6 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     @Autobind
     private submitHandler(event: Event) {
         event.preventDefault();
-        console.log(this.titleInputElement.value);
         const userInput = this.gatherUserInput();
 
         if (Array.isArray(userInput)) {
