@@ -1,19 +1,24 @@
 {
-  "name": "understanding-typescript",
-  "version": "1.0.0",
-  "description": "Understanding TypeScript Course Setup",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
-  },
-  "keywords": [
-    "typescript",
-    "course"
-  ],
-  "author": "Maximilian Schwarzmüller",
-  "license": "ISC",
-  "devDependencies": {
-    "lite-server": "^2.5.4"
-  }
+    "name": "understanding-typescript",
+    "version": "1.0.0",
+    "description": "Understanding TypeScript Course Setup",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "lite-server"
+    },
+    "keywords": [
+        "typescript",
+        "course"
+    ],
+    "author": "MG & Maximilian Schwarzmüller",
+    "license": "ISC",
+    "devDependencies": {
+        "lite-server": "^2.5.4",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.6.3",
+        "webpack": "^5.96.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.1.0"
+    }
 }
